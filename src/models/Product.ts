@@ -13,7 +13,7 @@ const productSchema = new Schema<IProduct>(
       type: String,
       required: true
     },
-    contenido: {
+    /* contenido: {
       valor: {
         type: Number,
         required: true
@@ -23,7 +23,7 @@ const productSchema = new Schema<IProduct>(
         enum: unidadesMedida,
         required: true
       }
-    },
+    }, */
     precio: {
       type: Number,
       required: true
@@ -34,4 +34,6 @@ const productSchema = new Schema<IProduct>(
   }
 );
 
-export const Product = model<IProduct>("Product", productSchema);
+const Product = model<IProduct>("Product", productSchema);
+
+export default Product;

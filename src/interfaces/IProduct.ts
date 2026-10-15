@@ -3,10 +3,10 @@ export type UnidadMedida = "g" | "kg" | "ml" | "l" | "unidad";
 export interface IProduct {
   nombre: string;
   marca: string;
-  contenido: {
+  /* contenido: {
     valor: number;
     unidad: UnidadMedida;
-  };
+  }; */
   precio: number;
   // categoria?: string;
   // codigoBarras?: string;
