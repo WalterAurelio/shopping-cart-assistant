@@ -8,4 +8,5 @@ export async function connectToDatabase(): Promise<void> {
   }
 
   await mongoose.connect(mongoUri);
+  console.log("Conexión a la base de datos exitosa.");
 }
