@@ -5,6 +5,11 @@
     "precio": 3500
   },
   {
+    "categoria": "Gaseosa",
+    "marca": "Sprite",
+    "precio": 5000
+  },
+  {
     "categoria": "Café",
     "marca": "Nescafé",
     "precio": 8500
