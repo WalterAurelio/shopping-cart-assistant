@@ -1,11 +1,11 @@
 import { model, Schema } from "mongoose";
 import type { IProduct, UnidadMedida } from "../interfaces/IProduct.js";
 
-const unidadesMedida: UnidadMedida[] = ["g", "kg", "ml", "l", "unidad"];
+// const unidadesMedida: UnidadMedida[] = ["g", "kg", "ml", "l", "unidad"];
 
 const productSchema = new Schema<IProduct>(
   {
-    nombre: {
+    categoria: {
       type: String,
       required: true
     },
@@ -13,17 +13,6 @@ const productSchema = new Schema<IProduct>(
       type: String,
       required: true
     },
-    /* contenido: {
-      valor: {
-        type: Number,
-        required: true
-      },
-      unidad: {
-        type: String,
-        enum: unidadesMedida,
-        required: true
-      }
-    }, */
     precio: {
       type: Number,
       required: true

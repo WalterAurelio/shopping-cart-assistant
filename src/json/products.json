@@ -1,51 +1,51 @@
 [
   {
-    "nombre": "Gaseosa",
+    "categoria": "Gaseosa",
     "marca": "Coca-Cola",
     "precio": 3500
   },
   {
-    "nombre": "Café",
+    "categoria": "Café",
     "marca": "Nescafé",
     "precio": 8500
   },
   {
-    "nombre": "Leche",
+    "categoria": "Leche",
     "marca": "La Serenísima",
     "precio": 1800
   },
   {
-    "nombre": "Arroz",
+    "categoria": "Arroz",
     "marca": "Gallo",
     "precio": 2400
   },
   {
-    "nombre": "Fideos",
+    "categoria": "Fideos",
     "marca": "Matarazzo",
     "precio": 1900
   },
   {
-    "nombre": "Yerba mate",
+    "categoria": "Yerba mate",
     "marca": "Playadito",
     "precio": 5200
   },
   {
-    "nombre": "Galletitas",
+    "categoria": "Galletitas",
     "marca": "Oreo",
     "precio": 2300
   },
   {
-    "nombre": "Aceite",
+    "categoria": "Aceite",
     "marca": "Cocinero",
     "precio": 4200
   },
   {
-    "nombre": "Azúcar",
+    "categoria": "Azúcar",
     "marca": "Ledesma",
     "precio": 1600
   },
   {
-    "nombre": "Yogur",
+    "categoria": "Yogur",
     "marca": "Yogurísimo",
     "precio": 2100
   }
