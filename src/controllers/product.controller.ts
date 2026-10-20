@@ -7,15 +7,23 @@ export async function getProducts(req: Request, res: Response): Promise<void> {
   console.log("Petición recibida...");
 
   try {
-    const file = req.file;
+    // const file = req.file;
+    const files = req.files as Express.Multer.File[];
 
-    if (!file) {
+    /* if (!file) {
+      res.status(400).json({
+        message: "No se ha proporcionado ningún archivo"
+      });
+      return;
+    } */
+    if (files.length === 0) {
       res.status(400).json({
         message: "No se ha proporcionado ningún archivo"
       });
       return;
     }
 
+    const file = files[0];
     const imageB64 = file.buffer.toString("base64");
     const interaction = await ai.interactions.create({
       model: "gemini-3.5-flash-lite",
@@ -65,7 +73,10 @@ export async function getProducts(req: Request, res: Response): Promise<void> {
 
     res.status(200).json({
       message: "Archivo procesado correctamente",
-      data: totalPrice
+      data: {
+        totalPrice,
+        detectedProducts
+      }
     });
   } catch (error) {
     console.error("Error al obtener los productos:", error);
@@ -73,4 +84,41 @@ export async function getProducts(req: Request, res: Response): Promise<void> {
       message: "Error al obtener los productos"
     });
   }
+}
+
+export async function getTotalPrice(req: Request, res: Response): Promise<void> {
+  const { products } = req.body as {
+    products: {
+      categoria: string;
+      marca: string;
+      cantidad: number;
+    }[];
+  };
+  console.log("Productos recibidos:", products);
+
+  // Productos sin el campo cantidad, solo con categoria y marca
+  const filteredProducts = products.map((product) => ({
+    categoria: product.categoria,
+    marca: product.marca
+  }));
+
+  const foundProducts = await Product.find({
+    $or: filteredProducts
+  });
+  console.log("Productos encontrados:", foundProducts);
+
+  const totalPrice = foundProducts.reduce((total, product) => {
+    const currentProduct = products.find((p) => p.categoria === product.categoria && p.marca === product.marca);
+
+    return total + product.precio * (currentProduct?.cantidad ?? 0);
+  }, 0);
+  console.log("Precio total calculado:", totalPrice);
+
+  res.status(200).json({
+    message: "Archivo procesado correctamente",
+    data: {
+      totalPrice,
+      detectedProducts: products
+    }
+  });
 }
